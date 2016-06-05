@@ -2,10 +2,10 @@ package com.sukhjinder.rockpaperscissors;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -13,23 +13,21 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String rock = "rock";
-    String paper = "paper";
-    String scissors = "scissors";
-    int userWins = 0;
-    int userLosses = 0;
-    int computerWins = 0;
-    int computerLosses = 0;
-    int numOfRounds = 0;
-    int ties = 0;
-    ArrayList<String> list = new ArrayList<String>(3);
+    private String rock = "rock";
+    private String paper = "paper";
+    private String scissors = "scissors";
+    private ArrayList<String> list = new ArrayList<String>(3);
+    private int wins = 0;
+    private int losses = 0;
+    private int numOfRounds = 0;
+    private int ties = 0;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         list.add(rock);
         list.add(paper);
@@ -37,29 +35,36 @@ public class MainActivity extends AppCompatActivity {
         ImageButton RockButton = (ImageButton) findViewById(R.id.rockButton);
         ImageButton PaperButton = (ImageButton) findViewById(R.id.paperButton);
         ImageButton ScissorsButton = (ImageButton) findViewById(R.id.scissorsButton);
+        Button EndButton = (Button) findViewById(R.id.endButton);
 
-
+/**
+ * Action listener for each of the image buttons
+ */
         RockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                numOfRounds++;
                 String computerChoice = list.get(randomNumGenerator());
                 if(computerChoice.equals("rock"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "Tie", Toast.LENGTH_SHORT).show();
+                    ties++;
                 }
 
                 if(computerChoice.equals("paper"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Win", Toast.LENGTH_SHORT).show();
+                    wins++;
                 }
 
                 if(computerChoice.equals("scissors"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Lose", Toast.LENGTH_SHORT).show();
+                    losses++;
+
                 }
             }
         });
@@ -69,23 +74,27 @@ public class MainActivity extends AppCompatActivity {
         PaperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                numOfRounds++;
                 String computerChoice = list.get(randomNumGenerator());
                 if(computerChoice.equals("rock"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Win", Toast.LENGTH_SHORT).show();
+                    wins++;
                 }
 
                 if(computerChoice.equals("paper"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "Tie", Toast.LENGTH_SHORT).show();
+                    ties++;
                 }
 
                 if(computerChoice.equals("scissors"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Lose", Toast.LENGTH_SHORT).show();
+                    losses++;
                 }
             }
         });
@@ -95,24 +104,36 @@ public class MainActivity extends AppCompatActivity {
         ScissorsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                numOfRounds++;
                 String computerChoice = list.get(randomNumGenerator());
                 if(computerChoice.equals("rock"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Lose", Toast.LENGTH_SHORT).show();
+                    losses++;
                 }
 
                 if(computerChoice.equals("paper"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Win", Toast.LENGTH_SHORT).show();
+                    wins++;
                 }
 
                 if(computerChoice.equals("scissors"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "Tie", Toast.LENGTH_SHORT).show();
+                    ties++;
                 }
+            }
+        });
+
+
+        EndButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplication().getBaseContext(), "Wins: " + wins + " | Losses: " + losses + " | Ties:" + ties, Toast.LENGTH_LONG).show();
             }
         });
 
