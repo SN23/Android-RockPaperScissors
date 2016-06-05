@@ -8,14 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String rock = "rock";
-    private String paper = "paper";
-    private String scissors = "scissors";
     private ArrayList<String> list = new ArrayList<String>(3);
     private int wins = 0;
     private int losses = 0;
@@ -29,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        list.add(rock);
-        list.add(paper);
-        list.add(scissors);
+        list.add("rock");
+        list.add("paper");
+        list.add("scissors");
         ImageButton RockButton = (ImageButton) findViewById(R.id.rockButton);
         ImageButton PaperButton = (ImageButton) findViewById(R.id.paperButton);
         ImageButton ScissorsButton = (ImageButton) findViewById(R.id.scissorsButton);
@@ -40,102 +36,103 @@ public class MainActivity extends AppCompatActivity {
 /**
  * Action listener for each of the image buttons
  */
-        RockButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numOfRounds++;
-                String computerChoice = list.get(randomNumGenerator());
-                if(computerChoice.equals("rock"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "Tie", Toast.LENGTH_SHORT).show();
-                    ties++;
+        if(RockButton!=null) {
+            RockButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    numOfRounds++;
+                    String computerChoice = list.get(randomNumGenerator());
+                    if (computerChoice.equals("rock")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "Tie", Toast.LENGTH_SHORT).show();
+                        ties++;
+                    }
+
+                    if (computerChoice.equals("paper")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "You Win", Toast.LENGTH_SHORT).show();
+                        wins++;
+                    }
+
+                    if (computerChoice.equals("scissors")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "You Lose", Toast.LENGTH_SHORT).show();
+                        losses++;
+
+                    }
                 }
 
-                if(computerChoice.equals("paper"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "You Win", Toast.LENGTH_SHORT).show();
-                    wins++;
+            });
+        }
+
+
+
+        if(PaperButton!=null) {
+            PaperButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    numOfRounds++;
+                    String computerChoice = list.get(randomNumGenerator());
+                    if (computerChoice.equals("rock")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "You Win", Toast.LENGTH_SHORT).show();
+                        wins++;
+                    }
+
+                    if (computerChoice.equals("paper")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "Tie", Toast.LENGTH_SHORT).show();
+                        ties++;
+                    }
+
+                    if (computerChoice.equals("scissors")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "You Lose", Toast.LENGTH_SHORT).show();
+                        losses++;
+                    }
                 }
+            });
+        }
 
-                if(computerChoice.equals("scissors"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "You Lose", Toast.LENGTH_SHORT).show();
-                    losses++;
 
+
+        if(ScissorsButton!=null) {
+            ScissorsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    numOfRounds++;
+                    String computerChoice = list.get(randomNumGenerator());
+                    if (computerChoice.equals("rock")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "You Lose", Toast.LENGTH_SHORT).show();
+                        losses++;
+                    }
+
+                    if (computerChoice.equals("paper")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "You Win", Toast.LENGTH_SHORT).show();
+                        wins++;
+                    }
+
+                    if (computerChoice.equals("scissors")) {
+                        Toast.makeText(getApplication().getBaseContext(),
+                                "Tie", Toast.LENGTH_SHORT).show();
+                        ties++;
+                    }
                 }
-            }
-        });
+            });
+        }
 
 
-
-        PaperButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numOfRounds++;
-                String computerChoice = list.get(randomNumGenerator());
-                if(computerChoice.equals("rock"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "You Win", Toast.LENGTH_SHORT).show();
-                    wins++;
+        if(EndButton!=null) {
+            EndButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(getApplication().getBaseContext(), "Wins: " + wins + " | Losses: " + losses + " | Ties:" + ties, Toast.LENGTH_LONG).show();
                 }
+            });
+        }
 
-                if(computerChoice.equals("paper"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "Tie", Toast.LENGTH_SHORT).show();
-                    ties++;
-                }
-
-                if(computerChoice.equals("scissors"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "You Lose", Toast.LENGTH_SHORT).show();
-                    losses++;
-                }
-            }
-        });
-
-
-
-        ScissorsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                numOfRounds++;
-                String computerChoice = list.get(randomNumGenerator());
-                if(computerChoice.equals("rock"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "You Lose", Toast.LENGTH_SHORT).show();
-                    losses++;
-                }
-
-                if(computerChoice.equals("paper"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "You Win", Toast.LENGTH_SHORT).show();
-                    wins++;
-                }
-
-                if(computerChoice.equals("scissors"))
-                {
-                    Toast.makeText(getApplication().getBaseContext(),
-                            "Tie", Toast.LENGTH_SHORT).show();
-                    ties++;
-                }
-            }
-        });
-
-
-        EndButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplication().getBaseContext(), "Wins: " + wins + " | Losses: " + losses + " | Ties:" + ties, Toast.LENGTH_LONG).show();
-            }
-        });
 
     }
 

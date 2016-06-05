@@ -38,12 +38,26 @@
             android:background="@drawable/paper"
             />
 
-        <ImageButton
-            android:layout_width="201dp"
-            android:layout_height="173dp"
-            android:id="@+id/scissorsButton"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/scissors"
-            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="201dp"
+                android:layout_height="173dp"
+                android:id="@+id/scissorsButton"
+                android:background="@drawable/scissors"
+                />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Game"
+                android:id="@+id/endButton"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
     </LinearLayout>
 </RelativeLayout>
