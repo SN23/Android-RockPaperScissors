@@ -43,20 +43,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String computerChoice = list.get((int) randomNumGenerator());
-                if(computerChoice=="rock")
+                String computerChoice = list.get(randomNumGenerator());
+                if(computerChoice.equals("rock"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "Tie", Toast.LENGTH_SHORT).show();
                 }
 
-                if(computerChoice=="paper")
+                if(computerChoice.equals("paper"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Win", Toast.LENGTH_SHORT).show();
                 }
 
-                if(computerChoice=="scissors")
+                if(computerChoice.equals("scissors"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Lose", Toast.LENGTH_SHORT).show();
@@ -69,20 +69,20 @@ public class MainActivity extends AppCompatActivity {
         PaperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String computerChoice = list.get((int) randomNumGenerator());
-                if(computerChoice=="rock")
+                String computerChoice = list.get(randomNumGenerator());
+                if(computerChoice.equals("rock"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Win", Toast.LENGTH_SHORT).show();
                 }
 
-                if(computerChoice=="paper")
+                if(computerChoice.equals("paper"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "Tie", Toast.LENGTH_SHORT).show();
                 }
 
-                if(computerChoice=="scissors")
+                if(computerChoice.equals("scissors"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Lose", Toast.LENGTH_SHORT).show();
@@ -95,20 +95,20 @@ public class MainActivity extends AppCompatActivity {
         ScissorsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String computerChoice = list.get((int) randomNumGenerator());
-                if(computerChoice=="rock")
+                String computerChoice = list.get(randomNumGenerator());
+                if(computerChoice.equals("rock"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Lose", Toast.LENGTH_SHORT).show();
                 }
 
-                if(computerChoice=="paper")
+                if(computerChoice.equals("paper"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "You Win", Toast.LENGTH_SHORT).show();
                 }
 
-                if(computerChoice=="scissors")
+                if(computerChoice.equals("scissors"))
                 {
                     Toast.makeText(getApplication().getBaseContext(),
                             "Tie", Toast.LENGTH_SHORT).show();
