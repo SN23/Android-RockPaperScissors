@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,56 +7,63 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.sukhjinder.rockpaperscissors.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:weightSum="1">
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <ImageButton
-            android:layout_width="173dp"
-            android:layout_height="137dp"
-            android:id="@+id/rockButton"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.26"
-            android:background="@drawable/rock"
-            />
-
-        <ImageButton
-            android:layout_width="194dp"
-            android:layout_height="146dp"
             android:id="@+id/paperButton"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.14"
-            android:background="@drawable/paper"
-            />
+            android:layout_width="188dp"
+            android:layout_height="150dp"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:background="@drawable/paper" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="312dp"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:layout_width="201dp"
-                android:layout_height="173dp"
-                android:id="@+id/scissorsButton"
-                android:background="@drawable/scissors"
-                />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="End Game"
-                android:id="@+id/endButton"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
-
+        <ImageButton
+            android:id="@+id/scissorsButton"
+            android:layout_width="188dp"
+            android:layout_height="162dp"
+            android:layout_weight="1"
+            android:background="@drawable/scissors" />
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/rockButton"
+        android:layout_width="184dp"
+        android:layout_height="153dp"
+        android:layout_below="@id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rock" />
+
+    <TextView
+        android:id="@+id/CPUChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rockButton"
+        android:layout_gravity="bottom"
+        android:text="@string/Computers_Choice"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/computerChoice"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_below="@id/CPUChoice"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/endButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/End_Game" />
+
 </RelativeLayout>
